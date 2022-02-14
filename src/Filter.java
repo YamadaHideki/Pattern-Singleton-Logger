@@ -12,8 +12,15 @@ public class Filter {
         List<Integer> result = new ArrayList<>();
 
         for (Integer i : source) {
-            if (i > treshold) result.add(i);
+            if (i > treshold) {
+                logger.log("Элемент \"" + i + "\" " + "проходит");
+                result.add(i);
+            } else {
+                logger.log("Элемент \"" + i + "\" " + "не проходит");
+            }
         }
+
+        logger.log("Прошло фильтр " + result.size() + " элемента(ов) из " + source.size());
 
         return result;
     }

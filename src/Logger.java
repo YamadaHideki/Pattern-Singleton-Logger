@@ -14,7 +14,13 @@ public class Logger {
     }
 
     public static Logger getInstance() {
-        if (instanse == null) instanse = new Logger();
+        if (instanse == null) {
+            synchronized (Logger.class) {
+                if (instance == null) {
+                    instanse = new Logger();
+                }
+            }
+        }
         return instanse;
     }
 }
